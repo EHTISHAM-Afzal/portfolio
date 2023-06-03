@@ -9,7 +9,7 @@ import ContactMe from './components/ContactMe'
 
 const App = () => {
   return (
-    <Box  className=' sm:w-[9vw] mx-[-4px] md:mx-[0px] overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600'  bgColor= {'black'} >
+    <Box  className=' min-w-[100vw] min-h-[100vh] w-[100vw] h-[100vh] sm:w-[9vw] mx-[-4px] md:mx-[0px] overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600'  bgColor= {'black'} >
     
     <HeroSection />
     <Projects/>

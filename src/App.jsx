@@ -1,7 +1,7 @@
 import React from 'react'
 import HeroSection from './components/HeroSection'
 import Projects from './components/Projects'
-import { Box } from '@chakra-ui/react'
+import { Box,} from '@chakra-ui/react'
 import ContactMe from './components/ContactMe'
 // import Motion from './components/motion'
 
@@ -9,7 +9,7 @@ import ContactMe from './components/ContactMe'
 
 const App = () => {
   return (
-    <Box  className=' min-w-[100vw]  w-[100vw] sm:w-[9vw] mx-[-4px] md:mx-[0px] overflow-hidden bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600'  bgColor= {'black'} >
+    <Box scrollSnapType={'y mandatory'}  className='  min-w-[100vw]  w-[100vw] sm:w-[9vw] mx-[-4px]  md:mx-[0px]  bg-gradient-to-r from-indigo-600 via-blue-600 to-indigo-600'  bgColor= {'black'} >
     <HeroSection />
     <Projects/>
     <ContactMe />

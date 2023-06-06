@@ -1,15 +1,16 @@
 import { projects } from './data'
-import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid, Link, Text, Stack, border, } from '@chakra-ui/react'
+import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid, Link, Text, Stack, border, transition, } from '@chakra-ui/react'
 import { transform } from 'framer-motion'
 import React from 'react'
 
 const Projects = () => {
     return (
-        <Box w={'full'}   >
+        <Box w={'full'} scrollSnapStop={'always'} scrollSnapAlign={'start'}   >
+            <Heading pl={'10'} textColor={'white'} size={'xl'} as={'h1'} >Projects</Heading>
             <SimpleGrid p={'8'} spacing={'3'} templateColumns='repeat(auto-fill, minmax(300px, 1fr))' alignSelf={'center'}>
             {projects.map((project) => ( 
-                <Card rounded={'lg'} key={project.id} h={'md'} border={'2px'} _hover={{ boxShadow: '2xl' , borderColor: 'white',  borderWidth : '2px' }} borderColor={'black'} overflow={'hidden'} >
-                    <Image src={project.thumbnail} maxH={'55%'}  minH={'55%'} w={'100%'} alt={project.name} objectFit={'cover'} placeItems={'center'}  />
+                <Card rounded={'lg'} key={project.id} h={'md'} boxShadow={'xl'}  _hover={{ boxShadow: '2xl' ,  transform: 'scale(1.02)', border: '1px solid black' , transition: 'all .2s ease-in-out' }} borderColor={'black'} overflow={'hidden'} >
+                    <Image src={project.thumbnail} maxH={'55%'}   minH={'55%'} w={'100%'} alt={project.name} objectFit={'cover'} placeItems={'center'}  />
                 <CardHeader py={'2'}>
                     <Heading>{project.title}</Heading>
                 </CardHeader>

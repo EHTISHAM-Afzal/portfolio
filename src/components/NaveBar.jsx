@@ -85,10 +85,10 @@ const NavBar = () => {
       <Box className="min-w-max w-3/6 bg-opacity-50 bg-clip-padding backdrop-blur-xl" />
       <Box className="w-3/6 h-full lg:w-2/12 text-white">
         <LinkBox className="flex flex-row h-12 min-h-full items-center justify-around shadow-md rounded-lg">
-          <Link href="/" className="w-14">
-            About
+          <Link href="/projects"  className="w-14">
+            Projects
           </Link>
-          <Link className="w-24">Contact_Me</Link>
+          <Link href="/projects" className="w-24">Contact_Me</Link>
         </LinkBox>
       </Box>
 

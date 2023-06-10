@@ -4,10 +4,7 @@ import Projects from './components/Projects'
 import { Box,} from '@chakra-ui/react'
 import ContactMe from './components/ContactMe'
 import {Routes , Route,Link}from 'react-router-dom'
-import ProjectDiscription from './components/ProjectDiscription'
 // import Motion from './components/motion'
-
-
 
 const App = () => {
   return (
@@ -26,7 +23,7 @@ const App = () => {
       </Route>
     </Routes>
     </Box>
-  )
-}
+  );
+};
 
-export default App
+export default App;

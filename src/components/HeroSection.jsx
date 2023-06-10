@@ -1,6 +1,7 @@
 import React from "react";
-import NaveBar from "./NaveBar";
+import { Outlet } from "react-router-dom";
 import { Flex, Image, Box, Text, Button } from "@chakra-ui/react";
+import NavBar from "./NaveBar";
 
 
 const HeroSection = () => {
@@ -12,9 +13,7 @@ const HeroSection = () => {
       scrollSnapAlign={"start"}
       className=" px-4 lg:px-24 md:px-12 sm:px-8"
       
-    >
-       <NaveBar  />
-       
+    ><NavBar/>
       <Box className=" w-full h-4/6 sm:h-4/6 pt-20 flex flex-col justify-center items-center">
         <Box className=" w-72 h-72 sm:w-80   sm:h-80 md:w-96 md:h-96 rounded-full flex justify-center items-center  overflow-hidden  object-fill border-2 border-white shadow-lg ">
           <Image

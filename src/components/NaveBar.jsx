@@ -15,6 +15,16 @@ import {
 import { useDisclosure } from "@chakra-ui/react";
 
 const NavBar = () => {
+  const scrolltoProjects = () => {
+    const projects = document.getElementById("projects");
+    projects.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrolltoContact = () => {
+    const contact = document.getElementById("contact");
+    contact.scrollIntoView({ behavior: "smooth" });
+  };
+  
+
   const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
@@ -32,14 +42,15 @@ const NavBar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
+  // {isVisible ? 'block':'hidden'}
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
 
   return (
-    <Box  className={` ${isVisible ? 'block':'hidden'}  h-16 fixed top-2 left-5 right-5 sm:left-10 sm:right-10  z-10 bg-opacity-30 backdrop-blur-sm`}>
+    <Box  className={` ${isVisible ? 'block':'hidden'} fixed  h-16  top-2 left-5 right-5 sm:left-10 sm:right-10  z-10 bg-opacity-30 backdrop-blur-sm`}>
     {/* {navebar} */}
-    <Box className={` w-full sm:h-16  flex top-2 sm:top-4 sm:static justify-space-around items-center bg-transparent shadow-lg sm:flex-row sm:justify-around md:justify-between lg:justify-between border border-white rounded-lg p-2`}>
+    <Box className={`${isVisible ? 'block':'hidden'}  w-full sm:h-16 spa  flex top-4 sm:top-4 sm:static justify-space-around items-center bg-transparent shadow-lg sm:flex-row sm:justify-around md:justify-between lg:justify-between border border-white rounded-lg p-2`}>
       <Box className="w-3/6 h-full hidden sm:flex justify-around items-center lg:w-3/12 shadow-lg rounded-lg bg-opacity-50 bg-clip-padding backdrop-blur-xl">
         <Link
           href="https://www.linkedin.com/in/ehtisham-afzal-819593195/"
@@ -85,10 +96,10 @@ const NavBar = () => {
       <Box className="min-w-max w-3/6 bg-opacity-50 bg-clip-padding backdrop-blur-xl" />
       <Box className="w-3/6 h-full lg:w-2/12 text-white">
         <LinkBox className="flex flex-row h-12 min-h-full items-center justify-around shadow-md rounded-lg">
-          <Link href="/projects"  className="w-14">
+          <Link onClick={()=>scrolltoProjects()}  className="w-14">
             Projects
           </Link>
-          <Link href="/projects" className="w-24">Contact_Me</Link>
+          <Link onClick={()=>scrolltoContact()} className="w-24">Contact_Me</Link>
         </LinkBox>
       </Box>
 

@@ -1,11 +1,11 @@
 import { projects } from './data'
-import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid, Link, Text, Stack, border, transition, } from '@chakra-ui/react'
-import { transform } from 'framer-motion'
+import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid,  Text, Stack, border, transition, } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 const Projects = () => {
     return (
-        <Box w={'full'} scrollSnapStop={'always'} scrollSnapAlign={'start'}   >
+        <Box w={'full'} scrollSnapStop={'always'} scrollSnapAlign={'start'} id='projects'  >
             <Heading pl={'10'} textColor={'white'} size={'xl'} as={'h1'} >Projects</Heading>
             <SimpleGrid p={'8'} spacing={'3'} templateColumns='repeat(auto-fill, minmax(300px, 1fr))' alignSelf={'center'}>
             {projects.map((project) => ( 
@@ -18,7 +18,7 @@ const Projects = () => {
                         <Text>{project.description}</Text>
                 </CardBody>
                 <CardFooter pt={'2'}>
-                    <Link pb={'2'} px={'2'} href={project.link} isExternal>Go to Project</Link>
+                    <Link pb={'2'} px={'2'} to={`${project.id}`}>Go to Project</Link>
                 </CardFooter>
             </Card>
             ))}

@@ -55,7 +55,7 @@ function ContactForm() {
   });
 
   return (
-    <Box scrollSnapAlign={'start'} >
+    <Box scrollSnapAlign={'start'} id="contact" >
     <Heading as='h1' size='xl' textColor={'white'} px={'10'}>Contact Me</Heading>
     <Flex align="center" justify="center" h="93vh" w="100vw">
       

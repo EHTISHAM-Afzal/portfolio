@@ -1,24 +1,27 @@
-import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid, Link, Text, Stack, } from '@chakra-ui/react'
+import { projects } from './data'
+import { Box, Card, CardBody, CardFooter, CardHeader, Heading, Image, SimpleGrid,  Text, Stack, border, transition, } from '@chakra-ui/react'
+import { Link } from 'react-router-dom'
 import React from 'react'
 
 const Projects = () => {
-    const [display , setDisplay] = React.useState(true)
     return (
-        <Box w={'full'} >
-            <SimpleGrid p={'8'} spacing={'3'} templateColumns='repeat(auto-fill, minmax(300px, 1fr))'>
-                <Card rounded={'lg'} border={'2px'} borderColor={'black'} m={'2'} p={'1'} >
-                    <CardBody>
-                        <Image src={'https:dochub.com/darklight3173/Gd71aZOw4QJoQddR2Q9AP3/dall-e-2023-05-25-10-58-54-change-outfit-into-black-suit-2-png?dt=2kKFvsc9wSCZ2A1RLMwx'} alt='' />
-
-                        <Stack direction={'column'} spacing={'3'} p={'2'} mt={'4'}>
-                            <Heading>A Project No 1</Heading>
-                            <Text>this the which i created for customers and blah bldah blah</Text>
-                        </Stack>
-                    </CardBody>
-                    <CardFooter>
-                        <Link>Click Here to see the Project</Link>
-                    </CardFooter>
-                </Card>
+        <Box w={'full'} scrollSnapStop={'always'} scrollSnapAlign={'start'} id='projects'  >
+            <Heading pl={'10'} textColor={'white'} size={'xl'} as={'h1'} >Projects</Heading>
+            <SimpleGrid p={'8'} spacing={'3'} templateColumns='repeat(auto-fill, minmax(300px, 1fr))' alignSelf={'center'}>
+            {projects.map((project) => ( 
+                <Card rounded={'lg'} key={project.id} h={'md'} boxShadow={'xl'}  _hover={{ boxShadow: '2xl' ,  transform: 'scale(1.02)', border: '1px solid black' , transition: 'all .2s ease-in-out' }} borderColor={'black'} overflow={'hidden'} >
+                    <Image src={project.thumbnail} maxH={'55%'}   minH={'55%'} w={'100%'} alt={project.name} objectFit={'cover'} placeItems={'center'}  />
+                <CardHeader py={'2'}>
+                    <Heading>{project.title}</Heading>
+                </CardHeader>
+                <CardBody py={'2'} px={'6'} >
+                        <Text>{project.description}</Text>
+                </CardBody>
+                <CardFooter pt={'2'}>
+                    <Link pb={'2'} px={'2'} to={`${project.id}`}>Go to Project</Link>
+                </CardFooter>
+            </Card>
+            ))}
             </SimpleGrid>
         </Box>
     )

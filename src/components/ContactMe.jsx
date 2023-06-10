@@ -3,6 +3,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import {
   Box,
+  Heading,
   Button,
   Flex,
   FormControl,
@@ -54,7 +55,10 @@ function ContactForm() {
   });
 
   return (
-    <Flex align="center" justify="center" h="100vh" w="100vw">
+    <Box scrollSnapAlign={'start'} id="contact" >
+    <Heading as='h1' size='xl' textColor={'white'} px={'10'}>Contact Me</Heading>
+    <Flex align="center" justify="center" h="93vh" w="100vw">
+      
       <Box
         bg="transparent"
         p={6}
@@ -191,6 +195,7 @@ function ContactForm() {
         )}
       </Box>
     </Flex>
+    </Box>
   );
 }
 

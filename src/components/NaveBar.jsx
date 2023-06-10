@@ -1,9 +1,8 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Box,
   Button,
   Avatar,
-  WrapItem,
   LinkBox,
   Link,
   Drawer,
@@ -16,15 +15,47 @@ import {
 import { useDisclosure } from "@chakra-ui/react";
 
 const NavBar = () => {
+  const scrolltoProjects = () => {
+    const projects = document.getElementById("projects");
+    projects.scrollIntoView({ behavior: "smooth" });
+  };
+  const scrolltoContact = () => {
+    const contact = document.getElementById("contact");
+    contact.scrollIntoView({ behavior: "smooth" });
+  };
+  
+
+  const [isVisible, setIsVisible] = useState(true);
+
+  useEffect(() => {
+    let prevScrollPos = window.pageYOffset;
+
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      setIsVisible(prevScrollPos > currentScrollPos || currentScrollPos === 0);
+      prevScrollPos = currentScrollPos;
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+  // {isVisible ? 'block':'hidden'}
+
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const btnRef = React.useRef();
+  const btnRef = useRef();
+
   return (
-    <Box className="  w-full  sm:h-16 mt-2 flex sticky top-2 sm:top-4 sm:static justify-space-around items-center bg-transparent  shadow-lg sm:flex-row sm:justify-around md:justify-between lg:justify-between border border-white rounded-lg p-2">
-      <Box className="  w-50vw w-3/6 h-full hidden sm:flex justify-around items-center lg:w-3/12  shadow-lg rounded-lg  bg-opacity-50 bg-clip-padding backdrop-blur-xl">
+    <Box  className={` ${isVisible ? 'block':'hidden'} fixed  h-16  top-2 left-5 right-5 sm:left-10 sm:right-10  z-10 bg-opacity-30 backdrop-blur-sm`}>
+    {/* {navebar} */}
+    <Box className={`${isVisible ? 'block':'hidden'}  w-full sm:h-16 spa  flex top-4 sm:top-4 sm:static justify-space-around items-center bg-transparent shadow-lg sm:flex-row sm:justify-around md:justify-between lg:justify-between border border-white rounded-lg p-2`}>
+      <Box className="w-3/6 h-full hidden sm:flex justify-around items-center lg:w-3/12 shadow-lg rounded-lg bg-opacity-50 bg-clip-padding backdrop-blur-xl">
         <Link
           href="https://www.linkedin.com/in/ehtisham-afzal-819593195/"
           isExternal
-          className="  rounded-full shadow-md hover:shadow-white "
+          className="rounded-full shadow-md hover:shadow-white"
         >
           <Avatar
             name="LinkedIn"
@@ -34,7 +65,7 @@ const NavBar = () => {
         <Link
           href="https://github.com/EHTISHAM-Afzal"
           isExternal
-          className="  rounded-full shadow-md hover:shadow-white "
+          className="rounded-full shadow-md hover:shadow-white"
         >
           <Avatar
             name="GitHub"
@@ -44,7 +75,7 @@ const NavBar = () => {
         <Link
           href="https://twitter.com/EHTISHAMoo7"
           isExternal
-          className="  rounded-full shadow-md hover:shadow-white "
+          className="rounded-full shadow-md hover:shadow-white"
         >
           <Avatar
             name="Twitter"
@@ -54,7 +85,7 @@ const NavBar = () => {
         <Link
           href="https://twitter.com/EHTISHAMoo7"
           isExternal
-          className="  rounded-full shadow-md hover:shadow-white "
+          className="rounded-full shadow-md hover:shadow-white"
         >
           <Avatar
             name="Facebook"
@@ -62,25 +93,28 @@ const NavBar = () => {
           />
         </Link>
       </Box>
-      <Box className=" min-w-max  w-3/6 bg-opacity-50 bg-clip-padding backdrop-blur-xl "></Box>
-      <Box className="  w-3/6  h-full  lg:w-2/12  text-white">
-        <LinkBox className="flex flex-row h-12 min-h-full  items-center justify-around shadow-md rounded-lg ">
-          <Link href="/" className=" w-14">
-            About
+      <Box className="min-w-max w-3/6 bg-opacity-50 bg-clip-padding backdrop-blur-xl" />
+      <Box className="w-3/6 h-full lg:w-2/12 text-white">
+        <LinkBox className="flex flex-row h-12 min-h-full items-center justify-around shadow-md rounded-lg">
+          <Link onClick={()=>scrolltoProjects()}  className="w-14">
+            Projects
           </Link>
-          <Link className=" w-24">Contact_Me</Link>
+          <Link onClick={()=>scrolltoContact()} className="w-24">Contact_Me</Link>
         </LinkBox>
       </Box>
 
       <Box className="w-full sm:hidden flex justify-center items-center">
         <Button
           ref={btnRef}
-          variant={"outline"}
+          variant="outline"
           colorScheme="gray"
           onClick={onOpen}
         >
           Socials
         </Button>
+        </Box>
+        {/* <NaveBar  */}
+        {/* {drawer} */}
         <Drawer
           isOpen={isOpen}
           placement="left"
@@ -93,33 +127,33 @@ const NavBar = () => {
             <DrawerHeader>Soial Links</DrawerHeader>
 
             <DrawerBody>
-              <Box className=" w-full flex flex-col justify-around items-center ">
+              <Box className="w-full flex flex-col justify-around items-center">
                 <Link
                   href="https://www.linkedin.com/in/ehtisham-afzal-819593195/"
                   isExternal
-                  className="  rounded-full shadow-md hover:shadow-white flex flex-row  items-center  text-center p-2 my-2 w-5/6"
+                  className="rounded-full shadow-md hover:shadow-white flex flex-row items-center text-center p-2 my-2 w-5/6"
                 >
                   <Avatar
-                    name="Linked In"
+                    name="LinkedIn"
                     src="https://www.svgrepo.com/show/452051/linkedin.svg"
                   />
-                  <h2 className="mx-2 text-sm">Linked In</h2>
+                  <h2 className="mx-2 text-sm">LinkedIn</h2>
                 </Link>
                 <Link
                   href="https://github.com/EHTISHAM-Afzal"
                   isExternal
-                  className="  rounded-full shadow-md hover:shadow-white flex flex-row  items-center  text-center p-2 my-2 w-5/6"
+                  className="rounded-full shadow-md hover:shadow-white flex flex-row items-center text-center p-2 my-2 w-5/6"
                 >
                   <Avatar
                     name="GitHub"
                     src="https://www.svgrepo.com/show/452211/github.svg"
                   />
-                  <h2 className="mx-2 text-sm">Github</h2>
+                  <h2 className="mx-2 text-sm">GitHub</h2>
                 </Link>
                 <Link
                   href="https://twitter.com/EHTISHAMoo7"
                   isExternal
-                  className="  rounded-full shadow-md hover:shadow-white flex flex-row  items-center  text-center p-2 my-2 w-5/6"
+                  className="rounded-full shadow-md hover:shadow-white flex flex-row items-center text-center p-2 my-2 w-5/6"
                 >
                   <Avatar
                     name="Twitter"
@@ -130,7 +164,7 @@ const NavBar = () => {
                 <Link
                   href="https://twitter.com/EHTISHAMoo7"
                   isExternal
-                  className="  rounded-full shadow-md hover:shadow-white flex flex-row  items-center  text-center p-2 my-2 w-5/6"
+                  className="rounded-full shadow-md hover:shadow-white flex flex-row items-center text-center p-2 my-2 w-5/6"
                 >
                   <Avatar
                     name="Facebook"
@@ -142,6 +176,7 @@ const NavBar = () => {
             </DrawerBody>
           </DrawerContent>
         </Drawer>
+        {/* {drawer} */} 
       </Box>
     </Box>
   );

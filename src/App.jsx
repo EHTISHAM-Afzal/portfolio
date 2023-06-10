@@ -4,6 +4,7 @@ import Projects from './components/Projects'
 import { Box,} from '@chakra-ui/react'
 import ContactMe from './components/ContactMe'
 import {Routes , Route,Link}from 'react-router-dom'
+import ProjectDiscription from './components/ProjectDiscription'
 // import Motion from './components/motion'
 
 
@@ -21,7 +22,7 @@ const App = () => {
         </>
       } 
       />
-      
+      <Route path={'/:id'} element={<ProjectDiscription/>}/>
       </Route>
     </Routes>
     </Box>
